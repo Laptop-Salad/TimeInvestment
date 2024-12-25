@@ -19,6 +19,7 @@ class Dashboard extends Component
     public function save() {
         $this->coin_form->save();
         $this->show_coin_form = false;
+        $this->coin_form->reset();
     }
 
     #[Computed]
