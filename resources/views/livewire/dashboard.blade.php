@@ -31,12 +31,18 @@
                         <th class="text-start p-2 w-64">Name</th>
                         <th class="text-start p-2">Description</th>
                         <th class="text-start p-2 w-28">Date</th>
+                        <th class="w-20"></th>
                     </tr>
                     @foreach($this->investments as $investment)
-                        <tr>
+                        <tr wire:key="{{$investment->id}}">
                             <td>{{$investment->name}}</td>
                             <td>{{$investment->description}}</td>
                             <td>{{$investment->date->diffForHumans()}}</td>
+                            <td>
+                                <x-primary-button wire:click="edit({{$investment->id}})">
+                                    Edit
+                                </x-primary-button>
+                            </td>
                         </tr>
                     @endforeach
                 </table>

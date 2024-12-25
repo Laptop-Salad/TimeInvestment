@@ -3,12 +3,13 @@
 namespace App\Livewire\Forms;
 
 use App\Models\Coin;
-use App\Models\User;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
 class CoinForm extends Form
 {
+    public ?Coin $coin;
+
     #[Validate(['required', 'string', 'max:255'])]
     public $name;
 
@@ -18,18 +19,26 @@ class CoinForm extends Form
     #[Validate(['required', 'date'])]
     public $date;
 
+    public function set(Coin $coin) {
+        $this->coin = $coin;
+        $this->fill($coin);
+        $this->date = $coin->date->format('Y-m-d');
+    }
+
     public function save() {
         $this->validate();
 
-        $coin = new Coin();
+        if (!isset($this->coin)) {
+            $this->coin = new Coin();
+            $this->coin->user_id = auth()->id();
+        }
 
-        $coin->fill([
+        $this->coin->fill([
             'name' => $this->name,
             'description' => $this->description,
             'date' => $this->date,
-            'user_id' => auth()->id(),
         ]);
 
-        $coin->save();
+        $this->coin->save();
     }
 }

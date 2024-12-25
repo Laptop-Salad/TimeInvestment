@@ -30,6 +30,11 @@ class Dashboard extends Component
             ->paginate();
     }
 
+    public function edit(Coin $coin) {
+        $this->coin_form->set($coin);
+        $this->show_coin_form = true;
+    }
+
     public function render()
     {
         return view('livewire.dashboard');
