@@ -1,0 +1,9 @@
+@layer base {
+    .table-default { @apply table-fixed w-full }
+    .table-default tr { @apply border-slate-300 border-b }
+    .table-default tr.link  { @apply hover:bg-gray-200 cursor-pointer relative }
+    .table-default a.link  { @apply after:absolute after:inset-0 }
+    .table-default td { @apply p-2 }
+    .table-default .cell-header { @apply font-semibold }
+    .table-default thead td { @apply font-semibold }
+}
