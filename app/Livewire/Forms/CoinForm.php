@@ -19,6 +19,9 @@ class CoinForm extends Form
     #[Validate(['required', 'date'])]
     public $date;
 
+    #[Validate(['required', 'numeric'])]
+    public $hours_spent = 0;
+
     public function set(Coin $coin) {
         $this->coin = $coin;
         $this->fill($coin);
@@ -37,6 +40,7 @@ class CoinForm extends Form
             'name' => $this->name,
             'description' => $this->description,
             'date' => $this->date,
+            'hours_spent' => $this->hours_spent,
         ]);
 
         $this->coin->save();
