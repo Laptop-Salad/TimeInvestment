@@ -43,7 +43,7 @@
                     </tr>
                     @foreach($this->investments as $investment)
                         <tr wire:key="{{$investment->id}}">
-                            <td>{{$investment->name}}</td>
+                            <td class="font-semibold">{{$investment->name}}</td>
                             <td>{{$investment->description}}</td>
                             <td>{{$investment->date->diffForHumans()}}</td>
                             <td>{{$investment->hours_spent}}</td>
