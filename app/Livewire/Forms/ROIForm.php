@@ -10,6 +10,7 @@ use Livewire\Form;
 class ROIForm extends Form
 {
     public ?Coin $coin;
+    public ?ReturnOnInvestment $roi;
 
     #[Validate(['required', 'string', 'max:255'])]
     public $name;
@@ -20,19 +21,28 @@ class ROIForm extends Form
     #[Validate(['required', 'date'])]
     public $date;
 
+    public function set(ReturnOnInvestment $roi) {
+        $this->fill($roi);
+        $this->date = $roi->date->format('Y-m-d');
+
+        $this->roi = $roi;
+    }
+
     public function save() {
         $this->validate();
 
-        $roi = new ReturnOnInvestment();
+        if (!isset($this->roi)) {
+            $this->roi = new ReturnOnInvestment();
+            $this->roi->coin_id = $this->coin->id;
+        }
 
-        $roi->fill([
+        $this->roi->fill([
             'name' => $this->name,
             'description' => $this->description,
             'date' => $this->date,
-            'coin_id' => $this->coin->id,
         ]);
 
-        $roi->save();
+        $this->roi->save();
     }
 
 }

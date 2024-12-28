@@ -41,6 +41,11 @@ class Show extends Component
         $this->show_roi_form = false;
     }
 
+    public function edit(ReturnOnInvestment $roi) {
+        $this->roi_form->set($roi);
+        $this->show_roi_form = true;
+    }
+
     public function render()
     {
         return view('livewire.investment.show');

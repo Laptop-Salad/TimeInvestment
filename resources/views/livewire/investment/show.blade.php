@@ -26,6 +26,11 @@
                     <td class="font-semibold">{{$roi->name}}</td>
                     <td>{{$roi->description}}</td>
                     <td>{{$roi->date->diffForHumans()}}</td>
+                    <td>
+                        <x-primary-button wire:click="edit({{$roi->id}})">
+                            Edit
+                        </x-primary-button>
+                    </td>
                 </tr>
             @endforeach
         </table>
