@@ -26,6 +26,7 @@ class Dashboard extends Component
     public function investments() {
         return Coin::query()
             ->where('user_id', auth()->id())
+            ->withCount('rois')
             ->latest('date')
             ->paginate();
     }

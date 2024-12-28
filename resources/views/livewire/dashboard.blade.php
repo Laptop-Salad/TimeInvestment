@@ -39,14 +39,18 @@
                         <th class="text-start p-2">Description</th>
                         <th class="text-start p-2 w-28">Date</th>
                         <th class="text-start p-2 w-28">Hours Spent</th>
+                        <th class="text-start p-2 w-28">ROIs</th>
                         <th class="w-20"></th>
                     </tr>
                     @foreach($this->investments as $investment)
                         <tr wire:key="{{$investment->id}}">
-                            <td class="font-semibold">{{$investment->name}}</td>
+                            <td class="font-semibold">
+                                <a href="{{route('investment.show', $investment)}}">{{$investment->name}}</a>
+                            </td>
                             <td>{{$investment->description}}</td>
                             <td>{{$investment->date->diffForHumans()}}</td>
                             <td>{{$investment->hours_spent}}</td>
+                            <td>{{$investment->rois_count}}</td>
                             <td>
                                 <x-primary-button wire:click="edit({{$investment->id}})">
                                     Edit
