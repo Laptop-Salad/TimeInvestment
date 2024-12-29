@@ -15,7 +15,7 @@ class ROIForm extends Form
     #[Validate(['required', 'string', 'max:255'])]
     public $name;
 
-    #[Validate(['required', 'string', 'max:255'])]
+    #[Validate(['nullable', 'string', 'max:255'])]
     public $description;
 
     #[Validate(['required', 'date'])]
