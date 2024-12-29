@@ -42,7 +42,7 @@
                                     {{$investment->name}}
                                 </a>
                             </td>
-                            <td>{{$investment->date->diffForHumans()}}</td>
+                            <td>{{$investment->date->format('d-m-Y')}}</td>
                             <td>{{$investment->hours_spent}}</td>
                             <td>{{$investment->rois_count}}</td>
                             <td>
