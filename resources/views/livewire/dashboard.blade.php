@@ -57,7 +57,9 @@
                     @endforeach
                 </table>
 
-                {{$this->investments->links()}}
+                <div class="mt-4">
+                    {{$this->investments->links()}}
+                </div>
             </div>
         </div>
     </div>

@@ -35,7 +35,9 @@
             @endforeach
         </table>
 
-        {{$this->rois->links()}}
+        <div class="mt-4">
+            {{$this->rois->links()}}
+        </div>
     </div>
 
     <form wire:submit="save">
