@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Enums\CoinType;
 use App\Livewire\Forms\CoinForm;
+use App\Livewire\Forms\Dashboard\FilterForm;
 use App\Models\Coin;
 use Carbon\Carbon;
 use Livewire\Attributes\Computed;
@@ -16,6 +17,8 @@ class Dashboard extends Component
 
     public CoinForm $coin_form;
 
+    public FilterForm $filters;
+
     public $show_coin_form = false;
 
     public function save() {
@@ -26,9 +29,13 @@ class Dashboard extends Component
 
     #[Computed]
     public function investments() {
-        return Coin::query()
+        $query = Coin::query()
             ->where('user_id', auth()->id())
-            ->withCount('rois')
+            ->withCount('rois');
+
+        $query = $this->filters->apply($query);
+
+        return $query
             ->latest('date')
             ->paginate();
     }
