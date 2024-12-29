@@ -5,6 +5,7 @@ namespace App\Livewire\Investment;
 use App\Livewire\Forms\ROIForm;
 use App\Models\Coin;
 use App\Models\ReturnOnInvestment;
+use Carbon\Carbon;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Locked;
 use Livewire\Component;
@@ -23,6 +24,7 @@ class Show extends Component
 
     public function showROIForm() {
         $this->roi_form->reset();
+        $this->coin_form->date = Carbon::today()->format('Y-m-d');
         $this->show_roi_form = true;
     }
 

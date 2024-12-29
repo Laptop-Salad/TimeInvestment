@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Enums\CoinType;
 use App\Livewire\Forms\CoinForm;
 use App\Models\Coin;
+use Carbon\Carbon;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -86,6 +87,7 @@ class Dashboard extends Component
 
     public function showCoinForm() {
         $this->coin_form->reset();
+        $this->coin_form->date = Carbon::today()->format('Y-m-d');
         $this->show_coin_form = true;
     }
 
