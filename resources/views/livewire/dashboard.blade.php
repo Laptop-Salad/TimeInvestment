@@ -14,7 +14,7 @@
     </x-header>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto sm:px-2 lg:px-4">
             <x-card class="p-5 grid grid-cols-3">
                 <p class="font-semibold text-lg">
                     {{ __('Investment so far') }}:
@@ -42,19 +42,17 @@
             <div class="mt-10">
                 <table class="table-default">
                     <tr>
-                        <th class="text-start p-2 w-64">Name</th>
-                        <th class="text-start p-2">Description</th>
+                        <th class="text-start p-2">Name</th>
                         <th class="text-start p-2 w-28">Date</th>
                         <th class="text-start p-2 w-28">Hours Spent</th>
                         <th class="text-start p-2 w-28">ROIs</th>
                         <th class="w-20"></th>
                     </tr>
                     @foreach($this->investments as $investment)
-                        <tr wire:key="{{$investment->id}}">
-                            <td class="font-semibold">
+                        <tr wire:key="{{$investment->id}}" class="!border-b-0">
+                            <td class="font-semibold text-blue-500 underline">
                                 <a href="{{route('investment.show', $investment)}}">{{$investment->name}}</a>
                             </td>
-                            <td>{{$investment->description}}</td>
                             <td>{{$investment->date->diffForHumans()}}</td>
                             <td>{{$investment->hours_spent}}</td>
                             <td>{{$investment->rois_count}}</td>
@@ -63,6 +61,9 @@
                                     Edit
                                 </x-primary-button>
                             </td>
+                        </tr>
+                        <tr wire:key="{{$investment->id}}.description" class="text-sm">
+                            <td colspan="5">{{$investment->description}}</td>
                         </tr>
                     @endforeach
                 </table>
