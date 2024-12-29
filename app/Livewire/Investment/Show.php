@@ -33,7 +33,7 @@ class Show extends Component
         return ReturnOnInvestment::query()
             ->where('coin_id', $this->coin->id)
             ->latest('date')
-            ->paginate();
+            ->paginate(15);
     }
 
     public function save() {

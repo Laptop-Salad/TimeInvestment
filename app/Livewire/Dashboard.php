@@ -37,7 +37,7 @@ class Dashboard extends Component
 
         return $query
             ->latest('date')
-            ->paginate();
+            ->paginate(15);
     }
 
     #[Computed]

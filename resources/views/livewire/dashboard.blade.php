@@ -56,6 +56,8 @@
                         </tr>
                     @endforeach
                 </table>
+
+                {{$this->investments->links()}}
             </div>
         </div>
     </div>
