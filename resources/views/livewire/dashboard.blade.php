@@ -8,36 +8,14 @@
 
         <x-slot name="actions">
             <x-primary-button wire:click="showCoinForm">
-                {{ __('Add an Investment') }}
+                {{ __('Submit Investment/Devestment') }}
             </x-primary-button>
         </x-slot>
     </x-header>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-2 lg:px-4">
-            <x-card class="p-5 grid grid-cols-3">
-                <p class="font-semibold text-lg">
-                    {{ __('Investment so far') }}:
-                    <span class="text-yellow-500 ms-4">
-                        <i class="fa-duotone fa-regular fa-coin me-2"></i>
-                        {{auth()->user()->coins->count()}}
-                    </span>
-                </p>
-                <p class="font-semibold text-lg border-s ps-2">
-                    {{ __('Hours Invested') }}:
-                    <span class="text-blue-500 ms-4">
-                        <i class="fa-duotone fa-regular fa-clock me-2"></i>
-                        {{auth()->user()->coins->sum('hours_spent')}}
-                    </span>
-                </p>
-                <p class="font-semibold text-lg border-s ps-2">
-                    {{ __('ROIs') }}:
-                    <span class="text-pink-500 ms-4">
-                        <i class="fa-solid fa-chart-mixed-up-circle-dollar me-2"></i>
-                        {{auth()->user()->coins->sum(fn($c) => $c->rois->count() ?? 0)}}
-                    </span>
-                </p>
-            </x-card>
+            <x-dashboard.statistics />
 
             <div class="mt-10">
                 <table class="table-default">
@@ -50,8 +28,19 @@
                     </tr>
                     @foreach($this->investments as $investment)
                         <tr wire:key="{{$investment->id}}" class="!border-b-0">
-                            <td class="font-semibold text-blue-500 underline">
-                                <a href="{{route('investment.show', $investment)}}">{{$investment->name}}</a>
+                            <td class="font-semibold">
+                                @if ($investment->type === \App\Enums\CoinType::Positive)
+                                    <i class="fa-solid fa-arrow-trend-up text-green-500 me-2"></i>
+                                @else
+                                    <i class="fa-solid fa-arrow-trend-down text-red-500 me-2"></i>
+                                @endif
+
+                                <a
+                                    class="text-blue-500 underline"
+                                    href="{{route('investment.show', $investment)}}"
+                                >
+                                    {{$investment->name}}
+                                </a>
                             </td>
                             <td>{{$investment->date->diffForHumans()}}</td>
                             <td>{{$investment->hours_spent}}</td>
@@ -69,11 +58,21 @@
                 </table>
             </div>
         </div>
-
     </div>
 
     <form wire:submit="save">
-        <x-modals.small x-model="$wire.show_coin_form" title="New Investment">
+        <x-modals.small x-model="$wire.show_coin_form" title="New Investment/Devestment">
+            <x-form.input-group
+                for="coin_form.type"
+                label="Type"
+            >
+                <x-form.select wire:model="coin_form.type" class="block w-full" required>
+                    @foreach(\App\Enums\CoinType::cases() as $type)
+                        <option value="{{$type->value}}">{{$type->name}}</option>
+                    @endforeach
+                </x-form.select>
+            </x-form.input-group>
+
             <x-form.input-group
                 for="coin_form.name"
                 label="Name"

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Forms;
 
+use App\Enums\CoinType;
 use App\Models\Coin;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
@@ -22,6 +23,9 @@ class CoinForm extends Form
     #[Validate(['required', 'numeric'])]
     public $hours_spent = 0;
 
+    #[Validate(['required', 'numeric', 'integer'])]
+    public $type = CoinType::Positive->value;
+
     public function set(Coin $coin) {
         $this->coin = $coin;
         $this->fill($coin);
@@ -36,12 +40,7 @@ class CoinForm extends Form
             $this->coin->user_id = auth()->id();
         }
 
-        $this->coin->fill([
-            'name' => $this->name,
-            'description' => $this->description,
-            'date' => $this->date,
-            'hours_spent' => $this->hours_spent,
-        ]);
+        $this->coin->fill($this->all());
 
         $this->coin->save();
     }
