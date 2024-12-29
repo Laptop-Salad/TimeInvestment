@@ -25,7 +25,7 @@
                 <tr wire:key="{{$roi->id}}">
                     <td class="font-semibold">{{$roi->name}}</td>
                     <td>{{$roi->description}}</td>
-                    <td>{{$roi->date->format('d-m-Y')}}</td>
+                    <td>{{$roi->date->format('d/m/Y')}}</td>
                     <td>
                         <x-primary-button wire:click="edit({{$roi->id}})">
                             Edit
