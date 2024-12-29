@@ -24,7 +24,7 @@ class Show extends Component
 
     public function showROIForm() {
         $this->roi_form->reset();
-        $this->coin_form->date = Carbon::today()->format('Y-m-d');
+        $this->roi_form->date = Carbon::today()->format('Y-m-d');
         $this->show_roi_form = true;
     }
 
