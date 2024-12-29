@@ -40,7 +40,7 @@
                 </p>
                 <p class="font-semibold text-lg border-s ps-2">
                     {{ __('ROIs') }}:
-                    <span class="text-pink-500 ms-4">
+                    <span class="text-green-500 ms-4">
                     <i class="fa-solid fa-chart-mixed-up-circle-dollar me-2"></i>
                     {{$this->positive_rois}}
                 </span>
@@ -64,8 +64,8 @@
                 </p>
                 <p class="font-semibold text-lg border-s ps-2">
                     {{ __('RODs') }}:
-                    <span class="text-pink-500 ms-4">
-                    <i class="fa-solid fa-chart-mixed-up-circle-dollar me-2"></i>
+                    <span class="text-red-500 ms-4">
+                    <i class="fa-solid fa-chart-line-down me-2"></i>
                     {{$this->negative_rois}}
                 </span>
                 </p>
