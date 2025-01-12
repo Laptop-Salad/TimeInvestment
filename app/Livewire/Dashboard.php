@@ -94,6 +94,7 @@ class Dashboard extends Component
 
     public function showCoinForm() {
         $this->coin_form->reset();
+        $this->coin_form->type = $this->filters->type;
         $this->coin_form->date = Carbon::today()->format('Y-m-d');
         $this->show_coin_form = true;
     }

@@ -8,7 +8,7 @@
 
         <x-slot name="actions">
             <x-primary-button wire:click="showCoinForm">
-                {{ __('Submit Investment/Devestment') }}
+                New {{$this->filters->type === \App\Enums\CoinType::Positive->value ? 'Investment' : 'Devestment'}}
             </x-primary-button>
         </x-slot>
     </x-header>
@@ -65,17 +65,25 @@
     </div>
 
     <form wire:submit="save">
-        <x-modals.small x-model="$wire.show_coin_form" title="New Investment/Devestment">
-            <x-form.input-group
-                for="coin_form.type"
-                label="Type"
-            >
-                <x-form.select wire:model="coin_form.type" class="block w-full" required>
-                    @foreach(\App\Enums\CoinType::cases() as $type)
-                        <option value="{{$type->value}}">{{$type->name}}</option>
-                    @endforeach
-                </x-form.select>
-            </x-form.input-group>
+        <x-modals.small
+            x-model="$wire.show_coin_form"
+            title="
+                {{isset($this->coin_form->coin) ? 'Edit' : 'New'}}
+                {{$this->coin_form->type === \App\Enums\CoinType::Positive->value ? 'Investment' : 'Devestment'}}
+            "
+        >
+            @isset($this->coin_form->coin)
+                <x-form.input-group
+                    for="coin_form.type"
+                    label="Type"
+                >
+                    <x-form.select wire:model="coin_form.type" class="block w-full" required>
+                        @foreach(\App\Enums\CoinType::cases() as $type)
+                            <option value="{{$type->value}}">{{$type->name}}</option>
+                        @endforeach
+                    </x-form.select>
+                </x-form.input-group>
+            @endisset
 
             <x-form.input-group
                 for="coin_form.name"
