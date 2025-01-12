@@ -46,21 +46,21 @@
                 for="roi_form.name"
                 label="Name"
             >
-                <x-text-input wire:model="roi_form.name" type="text" class="block w-full" required />
+                <x-form.text-input wire:model="roi_form.name" type="text" class="block w-full" required />
             </x-form.input-group>
 
             <x-form.input-group
                 for="roi_form.description"
                 label="Description"
             >
-                <x-text-input wire:model="roi_form.description" type="text" class="block w-full" />
+                <x-form.textarea wire:model="roi_form.description" type="text" class="block w-full" />
             </x-form.input-group>
 
             <x-form.input-group
                 for="roi_form.date"
                 label="Date"
             >
-                <x-text-input wire:model="roi_form.date" type="date" class="block w-full" />
+                <x-form.text-input wire:model="roi_form.date" type="date" class="block w-full" />
             </x-form.input-group>
 
             <x-slot:footer>

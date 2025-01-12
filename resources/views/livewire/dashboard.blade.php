@@ -81,28 +81,28 @@
                 for="coin_form.name"
                 label="Name"
             >
-                <x-text-input wire:model="coin_form.name" type="text" class="block w-full" required />
+                <x-form.text-input wire:model="coin_form.name" type="text" class="block w-full" required />
             </x-form.input-group>
 
             <x-form.input-group
                 for="coin_form.description"
                 label="Description"
             >
-                <x-text-input wire:model="coin_form.description" type="text" class="block w-full" />
+                <x-form.textarea wire:model="coin_form.description" class="block w-full"></x-form.textarea>
             </x-form.input-group>
 
             <x-form.input-group
                 for="coin_form.date"
                 label="Date"
             >
-                <x-text-input wire:model="coin_form.date" type="date" class="block w-full" />
+                <x-form.text-input wire:model="coin_form.date" type="date" class="block w-full" />
             </x-form.input-group>
 
             <x-form.input-group
                 for="coin_form.hours_spent"
                 label="Hours Spent"
             >
-                <x-text-input wire:model="coin_form.hours_spent" type="number" step="0.1" class="block w-full" />
+                <x-form.text-input wire:model="coin_form.hours_spent" type="number" step="0.1" class="block w-full" />
             </x-form.input-group>
 
             <x-slot:footer>
