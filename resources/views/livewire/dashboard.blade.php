@@ -18,7 +18,7 @@
             <x-dashboard.statistics />
 
             <div class="mt-10">
-                <table class="table-default">
+                <table class="table-default w-full">
                     <tr>
                         <th class="text-start p-2">Name</th>
                         <th class="text-start p-2 w-28">Date</th>
@@ -27,32 +27,41 @@
                         <th class="w-20"></th>
                     </tr>
                     @foreach($this->investments as $investment)
-                        <tr wire:key="{{$investment->id}}" class="!border-b-0">
-                            <td class="font-semibold">
-                                @if ($investment->type === \App\Enums\CoinType::Positive)
-                                    <i class="fa-solid fa-arrow-trend-up text-green-500 me-2"></i>
-                                @else
-                                    <i class="fa-solid fa-arrow-trend-down text-red-500 me-2"></i>
-                                @endif
+                        <tr wire:key="{{$investment->id}}" class="border-b tx full-link-header">
+                            <td>
+                                <span class="font-semibold">
+                                    @if ($investment->type === \App\Enums\CoinType::Positive)
+                                        <i class="fa-solid fa-arrow-trend-up text-green-500 me-2"></i>
+                                    @else
+                                        <i class="fa-solid fa-arrow-trend-down text-red-500 me-2"></i>
+                                    @endif
 
-                                <a
-                                    class="text-blue-500 underline"
-                                    href="{{route('investment.show', $investment)}}"
-                                >
-                                    {{$investment->name}}
-                                </a>
+                                    <a
+                                        class="text-blue-500 full-link"
+                                        href="{{route('investment.show', $investment)}}"
+                                    >
+                                        {{$investment->name}}
+                                    </a>
+                                </span>
+
+                                <p class="text-xs text-gray-500 pt-1 line-clamp-1 h-6">
+                                    {{$investment->description}}
+                                </p>
                             </td>
                             <td>{{$investment->date->format('d/m/Y')}}</td>
-                            <td>{{$investment->hours_spent}}</td>
-                            <td>{{$investment->rois_count}}</td>
+                            <td>
+                                <i class="fa-solid fa-clock me-1"></i>
+                                {{$investment->hours_spent}}
+                            </td>
+                            <td>
+                                <i class="fa-solid fa-hand-holding-circle-dollar me-1"></i>
+                                {{$investment->rois_count}}
+                            </td>
                             <td>
                                 <x-primary-button wire:click="edit({{$investment->id}})">
                                     Edit
                                 </x-primary-button>
                             </td>
-                        </tr>
-                        <tr wire:key="{{$investment->id}}.description" class="text-sm">
-                            <td colspan="5">{{$investment->description}}</td>
                         </tr>
                     @endforeach
                 </table>
