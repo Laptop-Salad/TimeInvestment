@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Enums\CoinType;
+use App\Enums\Status;
 use App\Livewire\Forms\CoinForm;
 use App\Livewire\Forms\Dashboard\FilterForm;
 use App\Models\Coin;
@@ -121,6 +122,7 @@ class Dashboard extends Component
         $this->coin_form->reset();
         $this->coin_form->type = $this->filters->type;
         $this->coin_form->date = Carbon::today()->format('Y-m-d');
+        $this->coin_form->status = $this->filters->status === 'all' ? Status::Completed->value : $this->filters->status;
         $this->show_coin_form = true;
     }
 
