@@ -17,6 +17,21 @@
         <div class="max-w-7xl mx-auto sm:px-2 lg:px-4">
             <x-dashboard.statistics />
 
+            <x-card class="p-5 !rounded-t-none">
+                <x-form.input-group
+                    for="filters.status"
+                    label="Status"
+                >
+                    <x-form.select wire:model.live="filters.status">
+                        <option value="">All</option>
+
+                        @foreach(\App\Enums\Status::cases() as $status)
+                            <option value="{{$status->value}}">{{$status->display()}}</option>
+                        @endforeach
+                    </x-form.select>
+                </x-form.input-group>
+            </x-card>
+
             <div class="mt-10">
                 <table class="table-default w-full">
                     <tr>

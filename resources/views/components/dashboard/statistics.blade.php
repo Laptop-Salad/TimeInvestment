@@ -21,7 +21,7 @@
         </x-primary-button>
     </div>
 
-    <x-card class="p-5 !rounded-tl-none">
+    <x-card class="p-5 !rounded-tl-none !rounded-b-none">
         @if ($this->filters->type === \App\Enums\CoinType::Positive->value)
             <div class="grid grid-cols-3">
                 <p class="font-semibold text-lg">
