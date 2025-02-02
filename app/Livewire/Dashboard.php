@@ -44,6 +44,7 @@ class Dashboard extends Component
     #[Computed]
     public function hoursDevested() {
         return Coin::query()
+            ->countable()
             ->where('user_id', auth()->id())
             ->type(CoinType::Negative)
             ->sum('hours_spent');
@@ -52,6 +53,7 @@ class Dashboard extends Component
     #[Computed]
     public function hoursInvested() {
         return Coin::query()
+            ->countable()
             ->where('user_id', auth()->id())
             ->type(CoinType::Positive)
             ->sum('hours_spent');
@@ -60,6 +62,7 @@ class Dashboard extends Component
     #[Computed]
     public function positiveRois() {
         return Coin::query()
+            ->countable()
             ->where('user_id', auth()->id())
             ->type(CoinType::Positive)
             ->withWhereHas('rois')
@@ -70,6 +73,7 @@ class Dashboard extends Component
     #[Computed]
     public function positiveCoins() {
         return Coin::query()
+            ->countable()
             ->where('user_id', auth()->id())
             ->type(CoinType::Positive)
             ->count();
@@ -78,6 +82,7 @@ class Dashboard extends Component
     #[Computed]
     public function negativeRois() {
         return Coin::query()
+            ->countable()
             ->where('user_id', auth()->id())
             ->type(CoinType::Negative)
             ->withWhereHas('rois')
@@ -88,6 +93,7 @@ class Dashboard extends Component
     #[Computed]
     public function negativeCoins() {
         return Coin::query()
+            ->countable()
             ->where('user_id', auth()->id())
             ->type(CoinType::Negative)
             ->count();

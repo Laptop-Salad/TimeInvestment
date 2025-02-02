@@ -3,6 +3,7 @@
 namespace App\Livewire\Forms;
 
 use App\Enums\CoinType;
+use App\Enums\Status;
 use App\Models\Coin;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
@@ -25,6 +26,9 @@ class CoinForm extends Form
 
     #[Validate(['required', 'numeric', 'integer'])]
     public $type = CoinType::Positive->value;
+
+    #[Validate(['required', 'integer', 'numeric'])]
+    public $status = Status::Completed->value;
 
     public function set(Coin $coin) {
         $this->coin = $coin;

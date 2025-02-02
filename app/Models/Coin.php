@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Enums\CoinType;
+use App\Enums\Status;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -14,6 +16,7 @@ class Coin extends Model
     protected $casts = [
         'date' => 'date',
         'type' => CoinType::class,
+        'status' => Status::class,
     ];
 
     public function user(): BelongsTo
@@ -27,5 +30,9 @@ class Coin extends Model
 
     public function scopeType($query, $type) {
         return $query->where('type', $type);
+    }
+
+    public function scopeCountable(Builder $query) {
+        $query->where('status', Status::Completed);
     }
 }

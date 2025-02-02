@@ -44,8 +44,17 @@
                                     </a>
                                 </span>
 
-                                <p class="text-xs text-gray-500 pt-1 line-clamp-1 h-6">
-                                    {{$investment->description}}
+                                <p class="text-xs text-gray-500 pt-1 h-6">
+                                    {{Str::words($investment->description, 4)}}
+
+                                    @isset($investment->description)
+                                        •
+                                    @endisset
+
+                                    <span class="{{$investment->status->colour()}}">
+                                         {{$investment->status->display()}}
+                                        <i class="{{$investment->status->icon()}}"></i>
+                                    </span>
                                 </p>
                             </td>
                             <td>{{$investment->date->format('d/m/Y')}}</td>
@@ -120,6 +129,17 @@
                 label="Hours Spent"
             >
                 <x-form.text-input wire:model="coin_form.hours_spent" type="number" step="0.1" class="block w-full" />
+            </x-form.input-group>
+
+            <x-form.input-group
+                for="coin_form.status"
+                label="Status"
+            >
+                <x-form.select wire:model="coin_form.status">
+                    @foreach(\App\Enums\Status::cases() as $status)
+                        <option value="{{$status->value}}">{{$status->display()}}</option>
+                    @endforeach
+                </x-form.select>
             </x-form.input-group>
 
             <x-slot:footer>
