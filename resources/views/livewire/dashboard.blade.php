@@ -23,7 +23,7 @@
                     label="Status"
                 >
                     <x-form.select wire:model.live="filters.status">
-                        <option value="">All</option>
+                        <option value="all">All</option>
 
                         @foreach(\App\Enums\Status::cases() as $status)
                             <option value="{{$status->value}}">{{$status->display()}}</option>

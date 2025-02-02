@@ -43,59 +43,77 @@ class Dashboard extends Component
 
     #[Computed]
     public function hoursDevested() {
-        return Coin::query()
-            ->countable()
+        $query = Coin::query()
             ->where('user_id', auth()->id())
-            ->type(CoinType::Negative)
+            ->type(CoinType::Negative);
+
+        $query = $this->filters->apply($query);
+
+        return $query
             ->sum('hours_spent');
     }
 
     #[Computed]
     public function hoursInvested() {
-        return Coin::query()
-            ->countable()
+        $query = Coin::query()
             ->where('user_id', auth()->id())
-            ->type(CoinType::Positive)
+            ->type(CoinType::Positive);
+
+        $query = $this->filters->apply($query);
+
+        return $query
             ->sum('hours_spent');
     }
 
     #[Computed]
     public function positiveRois() {
-        return Coin::query()
-            ->countable()
+        $query = Coin::query()
             ->where('user_id', auth()->id())
             ->type(CoinType::Positive)
-            ->withWhereHas('rois')
+            ->withWhereHas('rois');
+
+        $query = $this->filters->apply($query);
+
+        return $query
             ->get()
             ->sum(fn($c) => $c->rois->count() ?? 0);
     }
 
     #[Computed]
     public function positiveCoins() {
-        return Coin::query()
-            ->countable()
+        $query = Coin::query()
             ->where('user_id', auth()->id())
-            ->type(CoinType::Positive)
+            ->type(CoinType::Positive);
+
+        $query = $this->filters->apply($query);
+
+        return $query
             ->count();
     }
 
     #[Computed]
     public function negativeRois() {
-        return Coin::query()
-            ->countable()
+        $query = Coin::query()
             ->where('user_id', auth()->id())
             ->type(CoinType::Negative)
-            ->withWhereHas('rois')
+            ->withWhereHas('rois');
+
+        $query = $this->filters->apply($query);
+
+        return $query
             ->get()
             ->sum(fn($c) => $c->rois->count() ?? 0);
     }
 
     #[Computed]
     public function negativeCoins() {
-        return Coin::query()
-            ->countable()
+        $query = Coin::query()
             ->where('user_id', auth()->id())
-            ->type(CoinType::Negative)
+            ->type(CoinType::Negative);
+
+        $query = $this->filters->apply($query);
+
+        return $query
             ->count();
     }
 

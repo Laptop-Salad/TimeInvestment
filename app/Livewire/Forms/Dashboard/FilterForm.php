@@ -14,7 +14,7 @@ class FilterForm extends Form
     public $type = CoinType::Positive->value;
 
     #[Url]
-    public $status;
+    public $status = Status::Completed->value;
 
     public function apply(Builder $builder): Builder {
         $builder = $this->applyType($builder);
@@ -28,7 +28,7 @@ class FilterForm extends Form
     }
 
     public function applyStatus(Builder $builder): Builder {
-        if (!isset($this->status)) { return $builder; }
+        if ($this->status === 'all') { return $builder; }
 
         return $builder->where('status', $this->status);
     }
