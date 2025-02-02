@@ -16,9 +16,13 @@ class FilterForm extends Form
     #[Url]
     public $status = Status::Completed->value;
 
+    #[Url]
+    public $date;
+
     public function apply(Builder $builder): Builder {
         $builder = $this->applyType($builder);
         $builder = $this->applyStatus($builder);
+        $builder = $this->applyDate($builder);
 
         return $builder;
     }
@@ -31,5 +35,11 @@ class FilterForm extends Form
         if ($this->status === 'all') { return $builder; }
 
         return $builder->where('status', $this->status);
+    }
+
+    public function applyDate(Builder $builder): Builder {
+        if ($this->date === null) { return $builder; }
+
+        return $builder->whereDate('date', $this->date);
     }
 }

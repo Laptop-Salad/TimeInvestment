@@ -17,7 +17,7 @@
         <div class="max-w-7xl mx-auto sm:px-2 lg:px-4">
             <x-dashboard.statistics />
 
-            <x-card class="p-5 !rounded-t-none">
+            <x-card class="p-5 !rounded-t-none flex space-x-2">
                 <x-form.input-group
                     for="filters.status"
                     label="Status"
@@ -29,6 +29,13 @@
                             <option value="{{$status->value}}">{{$status->display()}}</option>
                         @endforeach
                     </x-form.select>
+                </x-form.input-group>
+
+                <x-form.input-group
+                    for="filters.date"
+                    label="Date"
+                >
+                    <x-form.text-input wire:model.live="filters.date" type="date" class="block w-full" />
                 </x-form.input-group>
             </x-card>
 
