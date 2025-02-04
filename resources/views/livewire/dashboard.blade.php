@@ -47,6 +47,7 @@
                         <th class="text-start p-2 w-28">Hours Spent</th>
                         <th class="text-start p-2 w-28">ROIs</th>
                         <th class="w-20"></th>
+                        <th class="w-20"></th>
                     </tr>
                     @foreach($this->investments as $investment)
                         <tr wire:key="{{$investment->id}}" class="border-b tx full-link-header">
@@ -91,6 +92,14 @@
                             <td>
                                 <x-primary-button wire:click="edit({{$investment->id}})">
                                     Edit
+                                </x-primary-button>
+                            </td>
+                            <td>
+                                <x-primary-button
+                                    wire:confirm="Are you sure you want to delete this investment?"
+                                    wire:click="delete({{$investment->id}})"
+                                >
+                                    Delete
                                 </x-primary-button>
                             </td>
                         </tr>

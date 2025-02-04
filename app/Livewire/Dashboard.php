@@ -131,6 +131,10 @@ class Dashboard extends Component
         $this->show_coin_form = true;
     }
 
+    public function delete(Coin $coin) {
+        $coin->delete();
+    }
+
     public function render()
     {
         return view('livewire.dashboard');
