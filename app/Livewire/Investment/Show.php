@@ -3,7 +3,7 @@
 namespace App\Livewire\Investment;
 
 use App\Livewire\Forms\ROIForm;
-use App\Models\Coin;
+use App\Models\Investment;
 use App\Models\ReturnOnInvestment;
 use Carbon\Carbon;
 use Livewire\Attributes\Computed;
@@ -16,7 +16,7 @@ class Show extends Component
     use WithPagination;
 
     #[Locked]
-    public Coin $coin;
+    public Investment $investment;
 
     public ROIForm $roi_form;
 
@@ -31,13 +31,13 @@ class Show extends Component
     #[Computed]
     public function rois() {
         return ReturnOnInvestment::query()
-            ->where('coin_id', $this->coin->id)
+            ->where('investment_id', $this->investment->id)
             ->latest('date')
             ->paginate(15);
     }
 
     public function save() {
-        $this->roi_form->coin = $this->coin;
+        $this->roi_form->investment = $this->investment;
         $this->roi_form->save();
         $this->roi_form->reset();
         $this->show_roi_form = false;

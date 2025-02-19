@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum CoinType: int
+enum InvestmentType: int
 {
     case Positive = 1;
     case Negative = 2;

@@ -2,14 +2,14 @@
 
 namespace App\Livewire\Forms;
 
-use App\Models\Coin;
+use App\Models\Investment;
 use App\Models\ReturnOnInvestment;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
 class ROIForm extends Form
 {
-    public ?Coin $coin;
+    public ?Investment $investment;
     public ?ReturnOnInvestment $roi;
 
     #[Validate(['required', 'string', 'max:255'])]
@@ -33,7 +33,7 @@ class ROIForm extends Form
 
         if (!isset($this->roi)) {
             $this->roi = new ReturnOnInvestment();
-            $this->roi->coin_id = $this->coin->id;
+            $this->roi->investment_id = $this->investment->id;
         }
 
         $this->roi->fill([

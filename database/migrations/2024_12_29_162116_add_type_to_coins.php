@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::table('coins', function (Blueprint $table) {
             $table->smallInteger('type')
                 ->after('description')
-                ->default(\App\Enums\CoinType::Positive->value);
+                ->default(\App\Enums\InvestmentType::Positive->value);
         });
     }
 

@@ -47,8 +47,8 @@ class User extends Authenticatable
         ];
     }
 
-    public function coins(): HasMany
+    public function investments(): HasMany
     {
-        return $this->hasMany(Coin::class);
+        return $this->hasMany(Investment::class);
     }
 }

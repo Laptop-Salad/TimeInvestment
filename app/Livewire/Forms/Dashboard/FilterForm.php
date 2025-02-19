@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Forms\Dashboard;
 
-use App\Enums\CoinType;
+use App\Enums\InvestmentType;
 use App\Enums\Status;
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\Attributes\Url;
@@ -11,7 +11,7 @@ use Livewire\Form;
 class FilterForm extends Form
 {
     #[Url]
-    public $type = CoinType::Positive->value;
+    public $type = InvestmentType::Positive->value;
 
     #[Url]
     public $status = Status::Completed->value;

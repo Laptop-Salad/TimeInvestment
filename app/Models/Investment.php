@@ -2,19 +2,19 @@
 
 namespace App\Models;
 
-use App\Enums\CoinType;
+use App\Enums\InvestmentType;
 use App\Enums\Status;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Coin extends Model
+class Investment extends Model
 {
     protected $guarded = ['id'];
 
     protected $casts = [
         'date' => 'date',
-        'type' => CoinType::class,
+        'type' => InvestmentType::class,
         'status' => Status::class,
     ];
 

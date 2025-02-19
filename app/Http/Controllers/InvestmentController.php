@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class InvestmentController extends Controller
 {
     public function index(Request $request): JsonResponse {
-        $investments = auth()->user()->coins()
+        $investments = auth()->user()->investments()
             ->latest('date')
             ->get();
 

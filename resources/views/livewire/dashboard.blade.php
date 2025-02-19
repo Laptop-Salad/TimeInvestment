@@ -7,20 +7,20 @@
         </x-slot>
 
         <x-slot name="actions">
-            <x-primary-button wire:click="showCoinForm">
-                New {{$this->filters->type === \App\Enums\CoinType::Positive->value ? 'Investment' : 'Devestment'}}
+            <x-primary-button wire:click="showInvestmentForm">
+                New {{$this->filters->type === \App\Enums\InvestmentType::Positive->value ? 'Investment' : 'Devestment'}}
             </x-primary-button>
         </x-slot>
     </x-header>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-2 lg:px-4">
-            <x-dashboard.statistics />
+            <x-dashboard.statistics/>
 
             <x-card class="p-5 !rounded-t-none flex space-x-2">
                 <x-form.input-group
-                    for="filters.status"
-                    label="Status"
+                        for="filters.status"
+                        label="Status"
                 >
                     <x-form.select wire:model.live="filters.status">
                         <option value="all">All</option>
@@ -32,10 +32,10 @@
                 </x-form.input-group>
 
                 <x-form.input-group
-                    for="filters.date"
-                    label="Date"
+                        for="filters.date"
+                        label="Date"
                 >
-                    <x-form.text-input wire:model.live="filters.date" type="date" class="block w-full" />
+                    <x-form.text-input wire:model.live="filters.date" type="date" class="block w-full"/>
                 </x-form.input-group>
             </x-card>
 
@@ -53,15 +53,15 @@
                         <tr wire:key="{{$investment->id}}" class="border-b tx full-link-header">
                             <td>
                                 <span class="font-semibold">
-                                    @if ($investment->type === \App\Enums\CoinType::Positive)
+                                    @if ($investment->type === \App\Enums\InvestmentType::Positive)
                                         <i class="fa-solid fa-arrow-trend-up text-green-500 me-2"></i>
                                     @else
                                         <i class="fa-solid fa-arrow-trend-down text-red-500 me-2"></i>
                                     @endif
 
                                     <a
-                                        class="text-blue-500 full-link"
-                                        href="{{route('investment.show', $investment)}}"
+                                            class="text-blue-500 full-link"
+                                            href="{{route('investment.show', $investment)}}"
                                     >
                                         {{$investment->name}}
                                     </a>
@@ -96,8 +96,8 @@
                             </td>
                             <td>
                                 <x-primary-button
-                                    wire:confirm="Are you sure you want to delete this investment?"
-                                    wire:click="delete({{$investment->id}})"
+                                        wire:confirm="Are you sure you want to delete this investment?"
+                                        wire:click="delete({{$investment->id}})"
                                 >
                                     Delete
                                 </x-primary-button>
@@ -115,19 +115,19 @@
 
     <form wire:submit="save">
         <x-modals.small
-            x-model="$wire.show_coin_form"
-            title="
-                {{isset($this->coin_form->coin) ? 'Edit' : 'New'}}
-                {{$this->coin_form->type === \App\Enums\CoinType::Positive->value ? 'Investment' : 'Devestment'}}
+                x-model="$wire.show_investment_form"
+                title="
+                {{isset($this->investment_form->investment) ? 'Edit' : 'New'}}
+                {{$this->investment_form->type === \App\Enums\InvestmentType::Positive->value ? 'Investment' : 'Devestment'}}
             "
         >
-            @isset($this->coin_form->coin)
+            @isset($this->investment_form->investment)
                 <x-form.input-group
-                    for="coin_form.type"
-                    label="Type"
+                        for="investment_form.type"
+                        label="Type"
                 >
-                    <x-form.select wire:model="coin_form.type" class="block w-full" required>
-                        @foreach(\App\Enums\CoinType::cases() as $type)
+                    <x-form.select wire:model="investment_form.type" class="block w-full" required>
+                        @foreach(\App\Enums\InvestmentType::cases() as $type)
                             <option value="{{$type->value}}">{{$type->name}}</option>
                         @endforeach
                     </x-form.select>
@@ -135,38 +135,38 @@
             @endisset
 
             <x-form.input-group
-                for="coin_form.name"
-                label="Name"
+                    for="investment_form.name"
+                    label="Name"
             >
-                <x-form.text-input wire:model="coin_form.name" type="text" class="block w-full" required />
+                <x-form.text-input wire:model="investment_form.name" type="text" class="block w-full" required/>
             </x-form.input-group>
 
             <x-form.input-group
-                for="coin_form.description"
-                label="Description"
+                    for="investment_form.description"
+                    label="Description"
             >
-                <x-form.textarea wire:model="coin_form.description" class="block w-full"></x-form.textarea>
+                <x-form.textarea wire:model="investment_form.description" class="block w-full"></x-form.textarea>
             </x-form.input-group>
 
             <x-form.input-group
-                for="coin_form.date"
-                label="Date"
+                    for="investment_form.date"
+                    label="Date"
             >
-                <x-form.text-input wire:model="coin_form.date" type="date" class="block w-full" />
+                <x-form.text-input wire:model="investment_form.date" type="date" class="block w-full"/>
             </x-form.input-group>
 
             <x-form.input-group
-                for="coin_form.hours_spent"
-                label="Hours Spent"
+                    for="investment_form.hours_spent"
+                    label="Hours Spent"
             >
-                <x-form.text-input wire:model="coin_form.hours_spent" type="number" step="0.1" class="block w-full" />
+                <x-form.text-input wire:model="investment_form.hours_spent" type="number" step="0.1" class="block w-full"/>
             </x-form.input-group>
 
             <x-form.input-group
-                for="coin_form.status"
-                label="Status"
+                    for="investment_form.status"
+                    label="Status"
             >
-                <x-form.select wire:model="coin_form.status">
+                <x-form.select wire:model="investment_form.status">
                     @foreach(\App\Enums\Status::cases() as $status)
                         <option value="{{$status->value}}">{{$status->display()}}</option>
                     @endforeach

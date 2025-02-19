@@ -1,34 +1,34 @@
 <div>
     <div class="flex space-x-2">
         <x-primary-button
-            wire:click="$set('filters.type', {{\App\Enums\CoinType::Positive->value}})"
-            @class([
-                '!bg-white !text-black' => $this->filters->type === \App\Enums\CoinType::Positive->value,
-                '!rounded-b-none'
-            ])
+                wire:click="$set('filters.type', {{\App\Enums\InvestmentType::Positive->value}})"
+                @class([
+                    '!bg-white !text-black' => $this->filters->type === \App\Enums\InvestmentType::Positive->value,
+                    '!rounded-b-none'
+                ])
         >
             Investment
         </x-primary-button>
 
         <x-primary-button
-            wire:click="$set('filters.type', {{\App\Enums\CoinType::Negative->value}})"
-            @class([
-                '!bg-white !text-black' => $this->filters->type === \App\Enums\CoinType::Negative->value,
-                '!rounded-b-none'
-            ])
+                wire:click="$set('filters.type', {{\App\Enums\InvestmentType::Negative->value}})"
+                @class([
+                    '!bg-white !text-black' => $this->filters->type === \App\Enums\InvestmentType::Negative->value,
+                    '!rounded-b-none'
+                ])
         >
             Devestment
         </x-primary-button>
     </div>
 
     <x-card class="p-5 !rounded-tl-none !rounded-b-none">
-        @if ($this->filters->type === \App\Enums\CoinType::Positive->value)
+        @if ($this->filters->type === \App\Enums\InvestmentType::Positive->value)
             <div class="grid grid-cols-3">
                 <p class="font-semibold text-lg">
                     {{ __('Investment so far') }}:
                     <span class="text-yellow-500 ms-4">
-                    <i class="fa-duotone fa-regular fa-coin me-2"></i>
-                    {{$this->positive_coins}}
+                    <i class="fa-duotone fa-regular fa-investment me-2"></i>
+                    {{$this->positive_investments}}
                 </span>
                 </p>
                 <p class="font-semibold text-lg border-s ps-2">
@@ -51,8 +51,8 @@
                 <p class="font-semibold text-lg">
                     {{ __('Devestment so far') }}:
                     <span class="text-yellow-500 ms-4">
-                    <i class="fa-duotone fa-regular fa-coin me-2"></i>
-                    {{$this->negative_coins}}
+                    <i class="fa-duotone fa-regular fa-investment me-2"></i>
+                    {{$this->negative_investments}}
                 </span>
                 </p>
                 <p class="font-semibold text-lg border-s ps-2">
