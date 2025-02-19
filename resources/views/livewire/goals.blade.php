@@ -28,7 +28,7 @@
                                 <span class="font-semibold">
                                     <a
                                         class="text-blue-500 full-link"
-{{--                                        href="{{route('goal.show', $goal)}}"--}}
+                                        href="{{route('goals.goal', $goal)}}"
                                     >
                                         {{$goal->name}}
                                     </a>

@@ -10,7 +10,7 @@ use Livewire\Form;
 
 class InvestmentForm extends Form
 {
-    public ?Investment $investment_form;
+    public ?Investment $investment;
 
     #[Validate(['required', 'string', 'max:255'])]
     public $name;
@@ -30,22 +30,22 @@ class InvestmentForm extends Form
     #[Validate(['required', 'integer', 'numeric'])]
     public $status = Status::Completed->value;
 
-    public function set(Investment $investment_form) {
-        $this->investment_form = $investment_form;
-        $this->fill($investment_form);
-        $this->date = $investment_form->date->format('Y-m-d');
+    public function set(Investment $investment) {
+        $this->investment = $investment;
+        $this->fill($investment);
+        $this->date = $investment->date->format('Y-m-d');
     }
 
     public function save() {
         $this->validate();
 
-        if (!isset($this->investment_form)) {
-            $this->investment_form = new Investment();
-            $this->investment_form->user_id = auth()->id();
+        if (!isset($this->investment)) {
+            $this->investment = new Investment();
+            $this->investment->user_id = auth()->id();
         }
 
-        $this->investment_form->fill($this->all());
+        $this->investment->fill($this->all());
 
-        $this->investment_form->save();
+        return $this->investment;
     }
 }

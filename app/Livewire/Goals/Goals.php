@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Goals;
 
 use App\Livewire\Forms\GoalForm;
 use App\Models\Goal;
