@@ -34,7 +34,7 @@
                         <th class="text-start p-2 w-28">ROIs</th>
                         <th class="w-20"></th>
                     </tr>
-                    @foreach($this->investments as $investment)
+                    @forelse($this->investments as $investment)
                         <tr wire:key="{{$investment->id}}" class="border-b tx full-link-header">
                             <td>
                                 <span class="font-semibold">
@@ -99,7 +99,17 @@
                                 </x-dropdown>
                             </td>
                         </tr>
-                    @endforeach
+                    @empty
+                        <tr class="!border-none">
+                           <td colspan="5">
+                               <div class="flex justify-center py-10">
+                                   <x-button wire:click="$dispatch('show-investment-form')" class="!text-lg">
+                                       No Investments, Create one now!
+                                   </x-button>
+                               </div>
+                           </td>
+                        </tr>
+                    @endforelse
                 </table>
 
                 <div class="mt-4">
