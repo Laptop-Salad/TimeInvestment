@@ -7,6 +7,7 @@ use App\Enums\Status;
 use App\Livewire\Forms\Dashboard\FilterForm;
 use App\Livewire\Forms\InvestmentForm;
 use App\Models\Investment;
+use App\Traits\FlexibleTable;
 use Carbon\Carbon;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\On;
@@ -17,6 +18,7 @@ use Livewire\WithPagination;
 class Table extends Component
 {
     use WithPagination;
+    use FlexibleTable;
 
     public InvestmentForm $investment_form;
 

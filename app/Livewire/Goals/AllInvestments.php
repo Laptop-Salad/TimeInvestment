@@ -13,8 +13,15 @@ class AllInvestments extends Component
     #[Locked]
     public Goal $goal;
 
-    #[On(['investment-saved'])]
+    #[On('investment-saved')]
     public function investmentSaved(Investment $investment) {
+        $investment->goal_id = $this->goal->id;
+        $investment->save();
+
+        $this->dispatch('refresh-investments');
+    }
+
+    public function addInvestment(Investment $investment) {
         $investment->goal_id = $this->goal->id;
         $investment->save();
 

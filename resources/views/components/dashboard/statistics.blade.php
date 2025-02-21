@@ -1,6 +1,6 @@
 <div>
     <div class="flex space-x-2">
-        <x-primary-button
+        <x-button
                 wire:click="$set('filters.type', {{\App\Enums\InvestmentType::Positive->value}})"
                 @class([
                     '!bg-white !text-black' => $this->filters->type === \App\Enums\InvestmentType::Positive->value,
@@ -8,9 +8,9 @@
                 ])
         >
             Investment
-        </x-primary-button>
+        </x-button>
 
-        <x-primary-button
+        <x-button
                 wire:click="$set('filters.type', {{\App\Enums\InvestmentType::Negative->value}})"
                 @class([
                     '!bg-white !text-black' => $this->filters->type === \App\Enums\InvestmentType::Negative->value,
@@ -18,7 +18,7 @@
                 ])
         >
             Devestment
-        </x-primary-button>
+        </x-button>
     </div>
 
     <x-card class="p-5 !rounded-tl-none !rounded-b-none">

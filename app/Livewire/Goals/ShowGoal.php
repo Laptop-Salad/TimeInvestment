@@ -21,6 +21,13 @@ class ShowGoal extends Component
         $this->dispatch('refresh-investments');
     }
 
+    public function removeInvestment(Investment $investment) {
+        $investment->goal_id = null;
+        $investment->save();
+
+        $this->dispatch('refresh-investments');
+    }
+
     public function render() {
         return view('livewire.show-goal');
     }

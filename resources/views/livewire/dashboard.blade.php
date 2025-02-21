@@ -7,9 +7,9 @@
         </x-slot>
 
         <x-slot name="actions">
-            <x-primary-button wire:click="$dispatch('show-investment-form')">
+            <x-button wire:click="$dispatch('show-investment-form')">
                 New Investment
-            </x-primary-button>
+            </x-button>
         </x-slot>
     </x-header>
 

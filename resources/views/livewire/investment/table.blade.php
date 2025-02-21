@@ -33,7 +33,6 @@
                         <th class="text-start p-2 w-28">Hours Spent</th>
                         <th class="text-start p-2 w-28">ROIs</th>
                         <th class="w-20"></th>
-                        <th class="w-20"></th>
                     </tr>
                     @foreach($this->investments as $investment)
                         <tr wire:key="{{$investment->id}}" class="border-b tx full-link-header">
@@ -76,17 +75,28 @@
                                 {{$investment->rois_count}}
                             </td>
                             <td>
-                                <x-primary-button wire:click="edit({{$investment->id}})">
-                                    Edit
-                                </x-primary-button>
-                            </td>
-                            <td>
-                                <x-primary-button
-                                    wire:confirm="Are you sure you want to delete this investment?"
-                                    wire:click="delete({{$investment->id}})"
-                                >
-                                    Delete
-                                </x-primary-button>
+                                <x-dropdown>
+                                    @isset($this->start_dropdown_items_component)
+                                        <x-dynamic-component
+                                            :component="$this->start_dropdown_items_component"
+                                            :$investment
+                                        />
+                                    @endisset
+                                    <x-dropdown.item
+                                        wire:confirm="Are you sure you want to delete this investment?"
+                                        wire:click="delete({{$investment->id}})"
+                                    >
+                                        Delete
+                                    </x-dropdown.item>
+                                    <x-dropdown.item
+                                        wire:click="edit({{$investment->id}})"
+                                    >
+                                        Edit
+                                    </x-dropdown.item>
+                                    @isset($this->end_dropdown_items_component)
+                                        <x-dynamic-component :component="$this->end_dropdown_items_component" />
+                                    @endisset
+                                </x-dropdown>
                             </td>
                         </tr>
                     @endforeach
@@ -160,9 +170,9 @@
             </x-form.input-group>
 
             <x-slot:footer>
-                <x-primary-button type="submit">
+                <x-button type="submit">
                     {{ __('Save') }}
-                </x-primary-button>
+                </x-button>
             </x-slot>
         </x-modals.small>
     </form>

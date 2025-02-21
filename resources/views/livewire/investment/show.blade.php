@@ -7,9 +7,9 @@
         </x-slot>
 
         <x-slot name="actions">
-            <x-primary-button wire:click="showROIForm">
+            <x-button wire:click="showROIForm">
                 {{ __('Add a ROI') }}
-            </x-primary-button>
+            </x-button>
         </x-slot>
     </x-header>
 
@@ -27,9 +27,9 @@
                     <td>{{$roi->description}}</td>
                     <td>{{$roi->date->format('d/m/Y')}}</td>
                     <td>
-                        <x-primary-button wire:click="edit({{$roi->id}})">
+                        <x-button wire:click="edit({{$roi->id}})">
                             Edit
-                        </x-primary-button>
+                        </x-button>
                     </td>
                 </tr>
             @endforeach
@@ -64,9 +64,9 @@
             </x-form.input-group>
 
             <x-slot:footer>
-                <x-primary-button type="submit">
+                <x-button type="submit">
                     {{ __('Save') }}
-                </x-primary-button>
+                </x-button>
             </x-slot>
         </x-modals.small>
     </form>

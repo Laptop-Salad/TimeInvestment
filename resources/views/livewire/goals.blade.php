@@ -7,9 +7,9 @@
         </x-slot>
 
         <x-slot name="actions">
-            <x-primary-button wire:click="showGoalForm">
+            <x-button wire:click="showGoalForm">
                 New Goal
-            </x-primary-button>
+            </x-button>
         </x-slot>
     </x-header>
 
@@ -39,17 +39,17 @@
                                 </p>
                             </td>
                             <td>
-                                <x-primary-button wire:click="edit({{$goal->id}})">
+                                <x-button wire:click="edit({{$goal->id}})">
                                     Edit
-                                </x-primary-button>
+                                </x-button>
                             </td>
                             <td>
-                                <x-primary-button
+                                <x-button
                                     wire:confirm="Are you sure you want to delete this goal?"
                                     wire:click="delete({{$goal->id}})"
                                 >
                                     Delete
-                                </x-primary-button>
+                                </x-button>
                             </td>
                         </tr>
                     @endforeach
@@ -82,9 +82,9 @@
             </x-form.input-group>
 
             <x-slot:footer>
-                <x-primary-button type="submit">
+                <x-button type="submit">
                     {{ __('Save') }}
-                </x-primary-button>
+                </x-button>
             </x-slot>
         </x-modals.small>
     </form>
