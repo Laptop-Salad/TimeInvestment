@@ -1,1 +1,1 @@
-<i class="fa-kit fa-sharp-solid-clock-desk-tag !text-5xl"></i>
+<i class="fa-solid fa-brain-circuit fa-xl"></i>
