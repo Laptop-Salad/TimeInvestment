@@ -1,9 +1,31 @@
 <div>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-2 lg:px-4">
+            <div class="flex gap-x-6">
+                <button
+                    wire:click="$set('filters.type', {{\App\Enums\InvestmentType::Positive->value}})"
+                    @class([
+                        'text-zinc-950 border-zinc-950' => $this->filters->type === \App\Enums\InvestmentType::Positive->value,
+                        'text-gray-500 border-b border-transparent pb-2'
+                    ])
+                >
+                    Investment
+                </button>
+
+                <button
+                    wire:click="$set('filters.type', {{\App\Enums\InvestmentType::Negative->value}})"
+                    @class([
+                        'text-zinc-950 border-zinc-950' => $this->filters->type === \App\Enums\InvestmentType::Negative->value,
+                        'text-gray-500 border-b border-transparent pb-2'
+                    ])
+                >
+                    Devestment
+                </button>
+            </div>
+
             <x-dashboard.statistics/>
 
-            <x-card class="p-5 !rounded-t-none flex space-x-2">
+            <x-card class="p-5 flex space-x-2">
                 <x-form.input-group
                     for="filters.status"
                     label="Status"
