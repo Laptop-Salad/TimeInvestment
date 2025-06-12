@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('return_on_investments', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(\App\Models\Coin::class)
-                ->constrained()
-                ->cascadeOnDelete()
-                ->cascadeOnUpdate();
+
+            $table->bigInteger('coin_id')->unsigned();
+            $table->foreign('coin_id')
+                ->references('id')
+                ->on('coins');
+
             $table->string('name');
             $table->string('description')->nullable();
             $table->date('date');
