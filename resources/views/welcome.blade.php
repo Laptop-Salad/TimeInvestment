@@ -26,11 +26,7 @@
                             Time Investment
                         </p>
                     </div>
-                    <div>
-                        @if (Route::has('login'))
-                            <livewire:welcome.navigation />
-                        @endif
-                    </div>
+                    <livewire:welcome.navigation />
                 </header>
             </div>
 

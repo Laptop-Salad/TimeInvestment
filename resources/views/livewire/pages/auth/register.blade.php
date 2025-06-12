@@ -37,6 +37,10 @@ new #[Layout('layouts.guest')] class extends Component
 }; ?>
 
 <div>
+    <div class="py-10">
+        <h1 class="font-semibold text-2xl">Register</h1>
+    </div>
+
     <form wire:submit="register">
         <!-- Name -->
         <div>
@@ -80,9 +84,9 @@ new #[Layout('layouts.guest')] class extends Component
                 {{ __('Already registered?') }}
             </a>
 
-            <button class="ms-4" type="submit">
+            <x-ti.button class="ms-6" type="submit">
                 {{ __('Register') }}
-            </button>
+            </x-ti.button>
         </div>
     </form>
 </div>
