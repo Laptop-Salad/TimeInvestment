@@ -3,3 +3,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    .text-default { @apply text-black dark:text-white }
+    .text-muted { @apply text-gray-700 dark:text-neutral-200 }
+
+    .bg-primary { @apply bg-lime-300 dark:bg-lime-600 }
+    .border-primary { @apply border-lime-400 }
+
+    .container { @apply md:mx-auto }
+}

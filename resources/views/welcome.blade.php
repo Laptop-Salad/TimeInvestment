@@ -16,27 +16,29 @@
         <!-- Styles -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="antialiased font-sans">
-        <div class="p-10 grid grid-cols-3">
-            <div>
-                <i class="fa-solid fa-brain-circuit fa-xl"></i>
+    <body class="antialiased font-sans dark:bg-neutral-900 text-default">
+        <div class="flex flex-col min-h-screen">
+            <div class="flex-1 max-h-32">
+                <header class="p-10 flex justify-between">
+                    <div>
+                        <p class="font-semibold">
+                            <i class="fa-regular fa-brain-circuit fa-xl me-2"></i>
+                            Time Investment
+                        </p>
+                    </div>
+                    <div>
+                        @if (Route::has('login'))
+                            <livewire:welcome.navigation />
+                        @endif
+                    </div>
+                </header>
             </div>
-            <div class="flex items-center justify-center">
-                <p class="font-semibold">Time Investment</p>
-            </div>
-            <header>
-                @if (Route::has('login'))
-                    <livewire:welcome.navigation />
-                @endif
-            </header>
-        </div>
 
-        <main class="mt-6">
-            <div class="flex flex-col items-center">
+            <main class="flex-grow container bg-primary border border-primary md:m-10 rounded-md h-full flex flex-col justify-center items-center text-center md:px-0 px-10">
                 <h1 class="font-bold text-4xl mb-10">Simple and motivating time management</h1>
 
-                <p class="text-slate-500">An easy way to track your to-dos and stay motivated by seeing how each task impacts you.</p>
-            </div>
-        </main>
+                <p class="text-muted">An easy way to track your to-dos and stay motivated by seeing how each task impacts you.</p>
+            </main>
+        </div>
     </body>
 </html>
