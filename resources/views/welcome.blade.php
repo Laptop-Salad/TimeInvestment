@@ -34,7 +34,7 @@
                 </header>
             </div>
 
-            <main class="flex-grow container bg-primary border border-primary md:m-10 rounded-md h-full flex flex-col justify-center items-center text-center md:px-0 px-10">
+            <main class="flex-grow container bg-primary border border-primary md:my-10 rounded-md h-full flex flex-col justify-center items-center text-center md:px-0 px-10">
                 <h1 class="font-bold text-4xl mb-10">Simple and motivating time management</h1>
 
                 <p class="text-muted">An easy way to track your to-dos and stay motivated by seeing how each task impacts you.</p>
