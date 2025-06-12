@@ -25,6 +25,10 @@ new #[Layout('layouts.guest')] class extends Component
 }; ?>
 
 <div>
+    <div class="py-10">
+        <h1 class="font-semibold text-2xl">Login</h1>
+    </div>
+
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -63,9 +67,9 @@ new #[Layout('layouts.guest')] class extends Component
                 </a>
             @endif
 
-            <button class="ms-3" type="submit">
+            <x-ti.button class="ms-6" type="submit">
                 {{ __('Log in') }}
-            </button>
+            </x-ti.button>
         </div>
     </form>
 </div>

@@ -1,4 +1,12 @@
 @layer base {
+    .container { @apply md:mx-auto }
+
+    .text-default { @apply text-black dark:text-white }
+    .text-muted { @apply text-gray-700 dark:text-neutral-200 }
+
+    .bg-primary { @apply bg-lime-300 dark:bg-lime-600 }
+    .border-primary { @apply border-lime-400 }
+
     .table-default { @apply table-fixed w-full }
     .table-default tr { @apply border-slate-300 border-b }
     .table-default tr.link  { @apply hover:bg-gray-200 cursor-pointer relative }
