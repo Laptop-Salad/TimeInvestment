@@ -25,27 +25,23 @@
 
             <x-dashboard.statistics/>
 
-            <x-card class="p-5 flex space-x-2">
-                <x-form.input-group
-                    for="filters.status"
+            <div class="flex justify-end space-x-2 pb-2 border-b">
+                <x-form.select
+                    wire:model.live="filters.status"
                     label="Status"
                 >
-                    <x-form.select wire:model.live="filters.status">
-                        <option value="all">All</option>
+                    <option value="all">Status</option>
 
-                        @foreach(\App\Enums\Status::cases() as $status)
-                            <option value="{{$status->value}}">{{$status->display()}}</option>
-                        @endforeach
-                    </x-form.select>
-                </x-form.input-group>
+                    @foreach(\App\Enums\Status::cases() as $status)
+                        <option value="{{$status->value}}">{{$status->display()}}</option>
+                    @endforeach
+                </x-form.select>
 
-                <x-form.input-group
-                    for="filters.date"
+                <x-form.date
+                    wire:model.live="filters.date"
                     label="Date"
-                >
-                    <x-form.text-input wire:model.live="filters.date" type="date" class="block w-full"/>
-                </x-form.input-group>
-            </x-card>
+                />
+            </div>
 
             <div class="mt-10">
                 <table class="table-default w-full">
@@ -124,11 +120,11 @@
                     @empty
                         <tr class="!border-none">
                            <td colspan="5">
-                               <div class="flex justify-center py-10">
-                                   <x-button wire:click="$dispatch('show-investment-form')" class="!text-lg">
-                                       No Investments, Create one now!
-                                   </x-button>
-                               </div>
+{{--                               <div class="flex justify-center py-10">--}}
+{{--                                   <x-button wire:click="$dispatch('show-investment-form')" class="!text-lg">--}}
+{{--                                       No Investments, Create one now!--}}
+{{--                                   </x-button>--}}
+{{--                               </div>--}}
                            </td>
                         </tr>
                     @endforelse
@@ -150,16 +146,14 @@
             "
         >
             @isset($this->investment_form->investment)
-                <x-form.input-group
-                    for="investment_form.type"
+                <x-form.select
+                    wire:model="filters.status"
                     label="Type"
                 >
-                    <x-form.select wire:model="investment_form.type" class="block w-full" required>
-                        @foreach(\App\Enums\InvestmentType::cases() as $type)
-                            <option value="{{$type->value}}">{{$type->name}}</option>
-                        @endforeach
-                    </x-form.select>
-                </x-form.input-group>
+                    @foreach(\App\Enums\InvestmentType::cases() as $type)
+                        <option value="{{$type->value}}">{{$type->name}}</option>
+                    @endforeach
+                </x-form.select>
             @endisset
 
             <x-form.input-group
@@ -190,16 +184,14 @@
                 <x-form.text-input wire:model="investment_form.hours_spent" type="number" step="0.1" class="block w-full"/>
             </x-form.input-group>
 
-            <x-form.input-group
-                for="investment_form.status"
+            <x-form.select
+                wire:model="investment_form.status"
                 label="Status"
             >
-                <x-form.select wire:model="investment_form.status">
-                    @foreach(\App\Enums\Status::cases() as $status)
-                        <option value="{{$status->value}}">{{$status->display()}}</option>
-                    @endforeach
-                </x-form.select>
-            </x-form.input-group>
+                @foreach(\App\Enums\Status::cases() as $status)
+                    <option value="{{$status->value}}">{{$status->display()}}</option>
+                @endforeach
+            </x-form.select>
 
             <x-slot:footer>
                 <x-button type="submit">

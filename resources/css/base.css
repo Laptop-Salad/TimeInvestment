@@ -2,7 +2,8 @@
     .container { @apply md:mx-auto }
 
     .text-default { @apply text-black dark:text-white }
-    .text-muted { @apply text-gray-700 dark:text-neutral-200 }
+    .text-muted { @apply text-gray-600 dark:text-neutral-200 }
+    .border-muted { @apply border-neutral-200 }
 
     .bg-primary { @apply bg-lime-300 dark:bg-lime-600 }
     .border-primary { @apply border-lime-400 }

@@ -1,3 +1,11 @@
-<select {{$attributes->merge(['class' => 'rounded-md border-gray-300 dark:border-gray-700'])}}>
-    {{$slot}}
-</select>
+@props([
+    'label',
+])
+
+<x-form.input-group :$label {{$attributes}}>
+    <select
+        {{$attributes->merge(['class' => 'shadow-sm border border-muted rounded-lg rounded-lg focus:outline-none text-muted text-sm'])}}
+    >
+        {{$slot}}
+    </select>
+</x-form.input-group>
