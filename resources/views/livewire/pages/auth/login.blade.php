@@ -26,7 +26,10 @@ new #[Layout('layouts.guest')] class extends Component
 
 <div>
     <div class="py-10">
-        <h1 class="font-semibold text-2xl">Login</h1>
+        <h1 class="font-semibold text-2xl">Welcome Back!</h1>
+        <p class="text-muted mt-2">
+            Don't have an account? <a href="{{route('register')}}" class="underline">Create one here.</a>
+        </p>
     </div>
 
     <!-- Session Status -->

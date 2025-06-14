@@ -38,7 +38,10 @@ new #[Layout('layouts.guest')] class extends Component
 
 <div>
     <div class="py-10">
-        <h1 class="font-semibold text-2xl">Register</h1>
+        <h1 class="font-semibold text-2xl">Create an Account</h1>
+        <p class="text-muted mt-2">
+            Already have an account? <a href="{{route('login')}}" class="underline">Login here</a>
+        </p>
     </div>
 
     <form wire:submit="register" class="space-y-6">
