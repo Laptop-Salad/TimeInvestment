@@ -16,6 +16,21 @@ class Goals extends Component
 
     public $show_goal_form = false;
 
+    public $show_goals_introduction = false;
+
+    public function mount() {
+        if (!auth()->user()->tips['goals_introduction']) {
+            $this->show_goals_introduction = true;
+        }
+    }
+
+    public function dismissGoalsIntroduction() {
+        $tips = auth()->user()->tips;
+        $tips['goals_introduction'] = 1;
+        auth()->user()->update(['tips' => $tips]);
+        $this->show_goals_introduction = false;
+    }
+
     #[Computed]
     public function goals() {
         return Goal::query()
@@ -45,8 +60,7 @@ class Goals extends Component
         $this->show_goal_form = true;
     }
 
-    public function render()
-    {
+    public function render() {
         return view('livewire.goals');
     }
 }

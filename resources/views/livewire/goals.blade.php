@@ -89,5 +89,22 @@
             </x-slot>
         </x-modals.small>
     </form>
+
+    <x-modals.small
+      x-model="$wire.show_goals_introduction"
+      title="Introducing Goals"
+      width="max-w-4xl"
+    >
+        <p>
+            Goals allow you to group investments together to keep track of your work towards something specific. This could be
+            towards your career, studies or anything else.
+        </p>
+
+        <div class="flex justify-end">
+            <x-ti.button size="sm" wire:click="dismissGoalsIntroduction">
+                Get Started!
+            </x-ti.button>
+        </div>
+    </x-modals.small>
 </div>
 

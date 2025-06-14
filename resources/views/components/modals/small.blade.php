@@ -10,7 +10,7 @@
     x-data="{ open: false }"
     x-modelable="open"
     x-show="open"
-    {{$attributes}}
+    {{$attributes->except('class')}}
     tabindex="-1"
     class="bg-slate-800/25 overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-full md:inset-0 h-[100vh] max-h-full"
 >
