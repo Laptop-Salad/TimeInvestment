@@ -67,19 +67,20 @@
             x-model="$wire.show_goal_form"
             title="{{isset($this->goal_form->goal) ? 'Edit' : 'New'}} Goal"
         >
-            <x-form.input-group
-                for="goal_form.name"
-                label="Name"
-            >
-                <x-form.text-input wire:model="goal_form.name" type="text" class="block w-full" required/>
-            </x-form.input-group>
+            <x-form.text-input
+              wire:model="goal_form.name"
+              type="text"
+              class="block w-full"
+              label="Name"
+              required
+            />
 
-            <x-form.input-group
-                for="goal_form.description"
-                label="Description"
-            >
-                <x-form.text-input wire:model="goal_form.description" type="text" class="block w-full" />
-            </x-form.input-group>
+            <x-form.text-input
+              wire:model="goal_form.description"
+              type="text"
+              class="block w-full"
+              label="Description"
+            />
 
             <x-slot:footer>
                 <x-button type="submit">

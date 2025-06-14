@@ -42,26 +42,27 @@
 
     <form wire:submit="save">
         <x-modals.small x-model="$wire.show_roi_form" title="New ROI">
-            <x-form.input-group
-                for="roi_form.name"
-                label="Name"
-            >
-                <x-form.text-input wire:model="roi_form.name" type="text" class="block w-full" required />
-            </x-form.input-group>
+            <x-form.text-input
+              wire:model="roi_form.name"
+              type="text"
+              class="block w-full"
+              label="Name"
+              required
+            />
 
-            <x-form.input-group
-                for="roi_form.description"
-                label="Description"
-            >
-                <x-form.textarea wire:model="roi_form.description" type="text" class="block w-full" />
-            </x-form.input-group>
+            <x-form.textarea
+              wire:model="roi_form.description"
+              type="text"
+              class="block w-full"
+              label="Description"
+            />
 
-            <x-form.input-group
-                for="roi_form.date"
-                label="Date"
-            >
-                <x-form.text-input wire:model="roi_form.date" type="date" class="block w-full" />
-            </x-form.input-group>
+            <x-form.text-input
+              wire:model="roi_form.date"
+              type="date"
+              class="block w-full"
+              label="Date"
+            />
 
             <x-slot:footer>
                 <x-button type="submit">

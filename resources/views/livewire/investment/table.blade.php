@@ -156,33 +156,35 @@
                 </x-form.select>
             @endisset
 
-            <x-form.input-group
-                for="investment_form.name"
-                label="Name"
-            >
-                <x-form.text-input wire:model="investment_form.name" type="text" class="block w-full" required/>
-            </x-form.input-group>
+            <x-form.text-input
+              wire:model="investment_form.name"
+              type="text"
+              class="block w-full"
+              label="Name"
+              required
+            />
 
-            <x-form.input-group
-                for="investment_form.description"
-                label="Description"
-            >
-                <x-form.textarea wire:model="investment_form.description" class="block w-full"></x-form.textarea>
-            </x-form.input-group>
+            <x-form.text-input
+              wire:model="investment_form.description"
+              class="block w-full"
+              label="Description"
+              textarea
+            />
 
-            <x-form.input-group
-                for="investment_form.date"
-                label="Date"
-            >
-                <x-form.text-input wire:model="investment_form.date" type="date" class="block w-full"/>
-            </x-form.input-group>
+            <x-form.text-input
+              wire:model="investment_form.date"
+              type="date"
+              class="block w-full"
+              label="Date"
+            />
 
-            <x-form.input-group
-                for="investment_form.hours_spent"
-                label="Hours Spent"
-            >
-                <x-form.text-input wire:model="investment_form.hours_spent" type="number" step="0.1" class="block w-full"/>
-            </x-form.input-group>
+            <x-form.text-input
+              wire:model="investment_form.hours_spent"
+              type="number"
+              step="0.1"
+              class="block w-full"
+              label="Hours Spent"
+            />
 
             <x-form.select
                 wire:model="investment_form.status"

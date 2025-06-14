@@ -32,25 +32,29 @@ new #[Layout('layouts.guest')] class extends Component
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form wire:submit="login">
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-form.text-input wire:model="form.email" id="email" class="block mt-1 w-full" type="email" name="email" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('form.email')" class="mt-2" />
-        </div>
+    <form wire:submit="login" class="space-y-6">
+        <x-form.text-input
+          wire:model="form.email"
+          id="email"
+          class="block mt-1 w-full"
+          type="email"
+          name="email"
+          label="Email"
+          required
+          autofocus
+          autocomplete="username"
+        />
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-form.text-input wire:model="form.password" id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('form.password')" class="mt-2" />
-        </div>
+        <x-form.text-input
+          wire:model="form.password"
+          id="password"
+          class="block mt-1 w-full"
+          type="password"
+          name="password"
+          label="Password"
+          required
+          autocomplete="current-password"
+        />
 
         <!-- Remember Me -->
         <div class="block mt-4">
