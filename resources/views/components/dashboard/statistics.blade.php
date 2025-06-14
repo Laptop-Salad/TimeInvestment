@@ -1,5 +1,5 @@
 <div class="my-10">
-    <div class="grid grid-cols-3 gap-5">
+    <div class="grid md:grid-cols-3 gap-5">
         @if ($this->filters->type === \App\Enums\InvestmentType::Positive->value)
             <x-card class="p-5">
                 <p class="font-semibold text-lg">

@@ -1,4 +1,4 @@
-<div>
+<div class="container">
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-2 lg:px-4">
             <div class="flex gap-x-6">
