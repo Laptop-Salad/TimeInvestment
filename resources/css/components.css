@@ -1,5 +1,5 @@
 @layer components {
     .input {
-        @apply shadow-sm border border-muted rounded-lg focus:outline-none text-muted text-sm default-bg
+        @apply shadow-sm border border-muted rounded-lg focus:outline-none text-muted text-sm default-component-bg
     }
 }

@@ -7,6 +7,7 @@
 
     .bg-primary { @apply bg-lime-300 dark:bg-lime-600 }
     .default-bg { @apply bg-gray-100 dark:bg-gray-900 }
+    .default-component-bg { @apply dark:bg-gray-900 }
     .border-primary { @apply border-lime-400 }
 
     .table-default { @apply table-fixed w-full }
