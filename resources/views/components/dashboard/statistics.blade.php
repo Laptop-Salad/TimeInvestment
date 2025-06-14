@@ -34,7 +34,7 @@
                     <i class="fa-regular fa-hourglass-end me-2"></i>
                     {{$this->negative_investments}}
                 </p>
-                <p class="text-muted text-sm mt-2">
+                <p class="text-muted text-xs mt-2">
                      {{ __('Devestment so far') }}
                 </p>
             </x-card>
