@@ -5,8 +5,8 @@
                 <button
                     wire:click="$set('filters.type', {{\App\Enums\InvestmentType::Positive->value}})"
                     @class([
-                        'text-zinc-950 border-zinc-950' => $this->filters->type === \App\Enums\InvestmentType::Positive->value,
-                        'text-gray-500 border-b border-transparent pb-2'
+                        'text-zinc-950 border-zinc-950 dark:border-zinc-200' => $this->filters->type === \App\Enums\InvestmentType::Positive->value,
+                        'text-gray-500 dark:text-gray-200 border-b border-transparent pb-2'
                     ])
                 >
                     Investment
@@ -15,8 +15,8 @@
                 <button
                     wire:click="$set('filters.type', {{\App\Enums\InvestmentType::Negative->value}})"
                     @class([
-                        'text-zinc-950 border-zinc-950' => $this->filters->type === \App\Enums\InvestmentType::Negative->value,
-                        'text-gray-500 border-b border-transparent pb-2'
+                        'text-zinc-950 border-zinc-950 dark:border-zinc-200' => $this->filters->type === \App\Enums\InvestmentType::Negative->value,
+                        'text-gray-500 dark:text-gray-200 border-b border-transparent pb-2'
                     ])
                 >
                     Devestment
