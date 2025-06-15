@@ -18,9 +18,9 @@ $width = match ($width) {
         @isset($trigger)
             {{$trigger}}
         @else
-            <x-button>
+            <x-ti.button variant="ghost" size="sm">
                 <i class="fa-solid fa-ellipsis"></i>
-            </x-button>
+            </x-ti.button>
         @endisset
     </div>
 

@@ -101,12 +101,6 @@
                                         />
                                     @endisset
                                     <x-dropdown.item
-                                        wire:confirm="Are you sure you want to delete this investment?"
-                                        wire:click="delete({{$investment->id}})"
-                                    >
-                                        Delete
-                                    </x-dropdown.item>
-                                    <x-dropdown.item
                                         wire:click="edit({{$investment->id}})"
                                     >
                                         Edit
@@ -114,6 +108,12 @@
                                     @isset($this->end_dropdown_items_component)
                                         <x-dynamic-component :component="$this->end_dropdown_items_component" />
                                     @endisset
+                                    <x-dropdown.item
+                                      wire:confirm="Are you sure you want to delete this investment?"
+                                      wire:click="delete({{$investment->id}})"
+                                    >
+                                        Delete
+                                    </x-dropdown.item>
                                 </x-dropdown>
                             </td>
                         </tr>
