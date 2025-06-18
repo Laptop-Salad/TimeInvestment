@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Goals;
 
-use App\Models\Goal;
+use App\Models\Activity;
 use App\Models\Investment;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\On;
@@ -11,7 +11,7 @@ use Livewire\Component;
 class AllInvestments extends Component
 {
     #[Locked]
-    public Goal $goal;
+    public Activity $goal;
 
     #[On('investment-saved')]
     public function investmentSaved(Investment $investment) {

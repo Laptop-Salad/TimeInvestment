@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Goal extends Model
+class Activity extends Model
 {
     protected $guarded = ['id'];
 

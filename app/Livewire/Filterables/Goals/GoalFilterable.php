@@ -13,7 +13,7 @@ class GoalFilterable implements IFilterable {
     }
 
     public function apply(Builder $builder): Builder {
-        return $builder->where('goal_id', $this->goal_id);
+        return $builder->where('activity_id', $this->activity_id);
     }
 
     public function toArray(): array {

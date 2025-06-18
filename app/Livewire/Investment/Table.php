@@ -5,6 +5,7 @@ namespace App\Livewire\Investment;
 use App\Enums\InvestmentType;
 use App\Enums\Status;
 use App\Livewire\Forms\Dashboard\FilterForm;
+use App\Livewire\Forms\ActivityForm;
 use App\Livewire\Forms\InvestmentForm;
 use App\Models\Investment;
 use App\Traits\FlexibleTable;
@@ -22,11 +23,14 @@ class Table extends Component
 
     public InvestmentForm $investment_form;
 
+    public ActivityForm $activity_form;
+
     public FilterForm $filters;
 
     public ?array $filterable;
 
     public $show_investment_form = false;
+    public $show_activity_form = false;
 
     public function save() {
         $investment = $this->investment_form->save();
@@ -164,7 +168,6 @@ class Table extends Component
     #[On(['show-investment-form'])]
     public function showInvestmentForm() {
         $this->investment_form->reset();
-        $this->investment_form->type = $this->filters->type;
         $this->investment_form->date = Carbon::today()->format('Y-m-d');
         $this->investment_form->status = $this->filters->status === 'all' ? Status::Completed->value : $this->filters->status;
         $this->show_investment_form = true;
@@ -177,6 +180,19 @@ class Table extends Component
 
     public function delete(Investment $investment) {
         $investment->delete();
+    }
+
+    public function saveGoal() {
+        $this->activity_form->save();
+        $this->activity_form->reset();
+
+        $this->show_activity_form = false;
+    }
+
+    #[On(['show-activity-form'])]
+    public function showActivityForm() {
+        $this->activity_form->reset();
+        $this->show_activity_form = true;
     }
 
     public function render() {

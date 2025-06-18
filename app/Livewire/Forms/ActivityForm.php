@@ -2,15 +2,15 @@
 
 namespace App\Livewire\Forms;
 
-use App\Models\Goal;
+use App\Models\Activity;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
-class GoalForm extends Form
+class ActivityForm extends Form
 {
     #[Locked]
-    public ?Goal $goal;
+    public ?Activity $activity;
 
     #[Validate(['required', 'string', 'max:255'])]
     public $name;
@@ -18,22 +18,22 @@ class GoalForm extends Form
     #[Validate(['nullable', 'string', 'max:255'])]
     public $description;
 
-    public function set(Goal $goal): void {
-        $this->goal = $goal;
-        $this->fill($goal->toArray());
+    public function set(Activity $activity): void {
+        $this->activity = $activity;
+        $this->fill($activity->toArray());
     }
 
     public function save() {
         $this->validate();
 
-        if (!isset($this->goal)) {
-            $this->goal = Goal::make([
+        if (!isset($this->activity)) {
+            $this->activity = Activity::make([
                 'user_id' => auth()->user()->id,
             ]);
         }
 
-        $this->goal->fill($this->all());
+        $this->activity->fill($this->all());
 
-        $this->goal->save();
+        $this->activity->save();
     }
 }

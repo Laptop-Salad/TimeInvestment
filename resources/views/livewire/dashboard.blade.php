@@ -7,9 +7,23 @@
         </x-slot>
 
         <x-slot name="actions">
-            <x-button wire:click="$dispatch('show-investment-form')">
-                New Investment
-            </x-button>
+            <x-dropdown>
+                <x-slot:trigger>
+                    <x-button>
+                        <i class="fa-regular fa-plus me-2"></i>
+                        New Investment
+                    </x-button>
+                </x-slot:trigger>
+
+                <x-dropdown.item wire:click="$dispatch('show-activity-form')">
+                    <i class="fa-regular fa-person-walking w-8"></i>
+                    New Activity
+                </x-dropdown.item>
+                <x-dropdown.item wire:click="$dispatch('show-investment-form')">
+                    <i class="fa-regular fa-chart-mixed-up-circle-dollar w-8"></i>
+                    New Investment
+                </x-dropdown.item>
+            </x-dropdown>
         </x-slot>
     </x-header>
 
@@ -30,6 +44,23 @@
 
         <div class="flex justify-end">
             <x-ti.button size="sm" wire:click="dismissWelcomeMessage">
+                Get Started!
+            </x-ti.button>
+        </div>
+    </x-modals.small>
+
+    <x-modals.small
+      x-model="$wire.show_activities_introduction"
+      title="Introducing Goals"
+      width="max-w-4xl"
+    >
+        <p>
+            Activities allow you to group investments together to keep track of your work towards something specific. This could be
+            towards your career, studies or anything else.
+        </p>
+
+        <div class="flex justify-end">
+            <x-ti.button size="sm" wire:click="dismissActivitiesIntroduction">
                 Get Started!
             </x-ti.button>
         </div>

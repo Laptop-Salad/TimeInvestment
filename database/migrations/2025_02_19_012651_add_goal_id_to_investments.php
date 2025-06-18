@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Goal;
+use App\Models\Activity;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,7 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('investments', function (Blueprint $table) {
-            $table->foreignIdFor(Goal::class)
+            $table->foreignIdFor(Activity::class)
                 ->nullable()
                 ->after('user_id')
                 ->constrained()
